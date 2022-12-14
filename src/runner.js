@@ -21,7 +21,7 @@ const runCheck = async (myCheck) => {
 const getNewChecks = async () => {
   const { data } = await axios.get("http://localhost:3000/api/check");
   const myChecks = _.filter(data, (c) =>
-    _.find(c.agents, (a) => a.name === process.env.NAME)
+    _.find(c.agents, (a) => a.name === process.env.AGENT_NAME)
   );
 
   _.forEach(myChecks, (myCheck) => {
