@@ -1,0 +1,26 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "ignorePatterns": [
+    "providers/tests/gitlab-test.js",
+    "providers/tests/github-test.js"
+  ],
+  "rules": {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "consistent-return": 0,
+    "no-console": 0
+  },
+  "plugins": ["jest"]
+}
