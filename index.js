@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const { sendErrorResponse } = require("./server/error-handling/error-handler");
 const healthCheck = require("./src/healthcheck");
+const runner = require("./src/runner");
 
 const app = express();
 
@@ -20,6 +21,7 @@ async function main() {
     console.log(`Example app listening on port ${port}`);
   });
   healthCheck.main();
+  runner.main();
 }
 
 main().catch((err) => {
