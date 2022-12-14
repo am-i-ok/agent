@@ -1,20 +1,26 @@
 const axios = require("axios");
 
-const livenessReport = async (name, location) => {
+const livenessReport = async () => {
   // TODO upsert new agent
+  const name = process.env.AGENT_NAME;
+  const icon = process.env.AGENT_ICON;
   try {
-    await axios.put("../api/agent", {
-      name,
-      location,
-    });
+    const newAgent = await axios.put(
+      `http://localhost:3000/api/agent/${name}`,
+      {
+        name,
+        icon,
+      }
+    );
+    console.log(newAgent.data);
   } catch (error) {
     throw new Error(
-      `could not report liveness for agent ${name} at ${location} caused by ${error}`
+      `could not report liveness for agent ${name} caused by ${error}`
     );
   }
 };
 const main = () => {
-  setInterval(livenessReport, 5000);
+  setInterval(livenessReport, 1000);
 };
 
 module.exports = {
